@@ -9,21 +9,25 @@
     <h1 style="text-align: center;">Webboard KakKak</h1>
     <hr>
     <form action="post.php" method="GET">
-        หมวดหมู่;
+        หมวดหมู่:
         <select>
             <option value="all">--ทั้งหมด--</option>
             <option value="general">เรื่องทั่วไป</option>
             <option value="study">ร้องเรียน</option>
         </select>
         <a href="login.html" style="float: right;">เข้าสู่ระบบ</a>
+        <?php 
 
-        <ul>
-            <a href="post.php?id=1"><li>กระทู้ที่1</li></a>
-            <a href="post.php?id=2"><li>กระทู้ที่2</li></a>
-            <a href="post.php?id=3"><li>กระทู้ที่3</li></a>
-            <a href="post.php?id=4"><li>กระทู้ที่4</li></a>
-            <a href="post.php?id=5"><li>กระทู้ที่5</li></a>
-        </ul>
+            $n ;
+            
+            for ($j = 1; $j <= 10; $j++){
+                
+                echo  "<a href= post.php?id=$j ><li>กระทู้ที่ $j </li></a>"  ;
+                
+            }
+            ?>
+        
+        
     </form>
 </body>
 </html>
