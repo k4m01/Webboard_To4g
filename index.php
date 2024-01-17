@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,20 +17,41 @@
             <option value="all">--ทั้งหมด--</option>
             <option value="general">เรื่องทั่วไป</option>
             <option value="study">ร้องเรียน</option>
+            
         </select>
-        <a href="login.html" style="float: right;">เข้าสู่ระบบ</a>
+        <?php
+            if(!isset($_SESSION['id'])){
+                echo "<a href=login.php style='float: right;'>เข้าสู่ระบบ</a>";
+            }else{
+                echo "<div style='float: right'>
+                    ผู้ใช้งานระบบ : $_SESSION[username] &nbsp;&nbsp;
+                    <a href=logout.php>ออกจากระบบ</a>
+                </div><br> <a href=newpost.php>สร้างกระทู้ใหม่</a>";
+               
+                
+            }
+           
+        ?>
+
+
+        </form>
+        <ul>
         <?php 
 
             $n ;
             
             for ($j = 1; $j <= 10; $j++){
                 
-                echo  "<a href= post.php?id=$j ><li>กระทู้ที่ $j </li></a>"  ;
+                echo  "<li><a href= post.php?id=$j >กระทู้ที่ $j </a>";
+                if(isset($_SESSION['id']) &&$_SESSION['role']=='a'){
+                    echo "&nbsp;&nbsp;<a href= delete.php?id=$j>ลบ</a>";
+                }
+                echo  "</li>"  ;
                 
             }
             ?>
+        </ul>
         
-        
-    </form>
+    
 </body>
 </html>
