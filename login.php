@@ -15,7 +15,7 @@
 </head>
 <body>
     
-    <h1 style="text-align: center;">Webboard KakKak</h1>
+    <h1 style="text-align: center;" class="">Webboard KakKak</h1>
     <hr>
         <form action="verify.php" method="POST">
         <table style="border: 2px solid black; width: 40%;" align="center">
