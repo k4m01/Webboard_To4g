@@ -16,8 +16,6 @@
 </head>
 <body>
         
-        <h1 style="text-align: center;">Webboard KakKak</h1>
-        <hr>
         <div style="text-align: center;">
             <?php
 
@@ -28,23 +26,29 @@
                         $_SESSION["username"] = "admin";
                         $_SESSION["role"] = "a";
                         $_SESSION["id"] = "session_id()";
-                        echo "ยินดีต้อนรับคุณ Admin";
+                        header("location:index.php");
+                        die();
+                        //echo "ยินดีต้อนรับคุณ Admin";
                     }elseif ( $login == 'member' && $pwd == 'mem1234'){
                         $_SESSION["username"] = "member";
                         $_SESSION["role"] = "m";
                         $_SESSION["id"] = "session_id()";
-                        echo "ยินดีต้อนรับคุณ Member";
+                        header("location:index.php");
+                        die();
+                        //echo "ยินดีต้อนรับคุณ Member";
                     }else{
-                        echo "ชื่อบัญชีและรหัสผ่านไม่ถูกต้อง" ;
+                        $_SESSION['error'] = 'error';
+                        header("location:login.php");
+                        die();
                     }
 
                     
                 ?>
-             <br>
+             <!-- <br>
              <a href="index.php"> กลับไปหน้าหลัก </a>
                   
             </div>
-        <br>
+        <br> -->
 
         
 </body>
