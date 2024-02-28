@@ -24,32 +24,52 @@
             <div class="col-lg-3 col-md-2 col-sm-1"></div>
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card border-info">
-                    <div class="card-header bg-primary text-white">ตั้งกระทู้ใหม่</div>
+                    <div class="card-header bg-info text-white">ตั้งกระทู้ใหม่</div>
+                    <div class="card-body">
+                        <form action="newpost_save.php" method="post">
+                            <div class="row">
+                                <label for="" class="col-lg-3 col-form-label">หมวดหมู่:</label>
+                                <div class="col-lg-9">
+                                    <select name="category" class="form-select">
+                                        <?php
+                                             $conn = new PDO("mysql:host=localhost;dbname=webborad;charset=utf8","root","");
+                                             $sql= "SELECT * FROM category";
+                                             foreach($conn->query($sql) as $row){
+                                                echo "<option value=$row[id]>$row[name]</option>>";
+                                             }
+                                             $conn=null;
+                                        ?>
+
+                                        <!-- <option value="general">เรื่องทั่วไป</option>
+                                        <option value="general">เรื่องเรียน</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <label for="header" class="col-lg-3 col-form-label" >หัวข้อ:</label>
+                                <div class="col-lg-9">
+                                    <input id="header" type="text" name="topic" class="form-control" require>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <label for="comment" class="col-lg-3 col-form-label" >เนื้อหา:</label>
+                                <div class="col-lg-9">
+                                    <textarea name="comment" id="comment" rows="8" class="form-control" require></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-12 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-info btn-sm text-white me-2"><i class="bi bi-caret-right-square"></i> บันทึกข้อความ</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-x-square"></i> ยกเลิก</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-2 col-sm-1"></div>
         </div>
     </div>
 
-
-    <?php
-        echo "ผู้ใช้ : " .  $_SESSION['username'] . "<br>" ;
-        echo "<form>
-                 <table>
-                    <tr><td>เข้าสู่ระบบ: </td>
-                    <td>
-                    <select>
-                        <option value=all>--ทั้งหมด--</option>
-                        <option value=general>เรื่องทั่วไป</option>
-                        <option value=study>ร้องเรียน</option>
-                    </select>
-                    </td>
-                </tr>
-                <tr><td>หัวข้อ: </td><td><input type=text></td></tr>
-                <tr><td>เนื้อหา: </td><td><textarea name = text rows= 2 cols= 30></textarea></td></tr>
-                <tr><td></td><td><input type = submit value = บันทึกข้อความ></td></tr>
-        </table>
-        </form>";
-        
-    ?>
 </body>
 </html>
