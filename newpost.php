@@ -32,7 +32,7 @@
                                 <div class="col-lg-9">
                                     <select name="category" class="form-select">
                                         <?php
-                                             $conn = new PDO("mysql:host=localhost;dbname=webborad;charset=utf8","root","");
+                                             $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
                                              $sql= "SELECT * FROM category";
                                              foreach($conn->query($sql) as $row){
                                                 echo "<option value=$row[id]>$row[name]</option>>";
