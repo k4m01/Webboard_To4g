@@ -46,7 +46,13 @@
                         <div class="row mt-3">
                             <label for="password" class="col-lg-3 col-form-label">รหัสผ่าน:</label>
                             <div class="col-lg-9">
-                                <input id="password" type="password" name="pwd" class="form-control" require>
+                                <input type="password" name="pwd" id="pwd" class="form-control" require>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <label for="password" class="col-lg-3 col-form-label">ใส่รหัสผ่านซ้ำ:</label>
+                            <div class="col-lg-9">
+                                <input type="password" name="pwd2" id="pwd2" onblur="OnBlurPwd()" class="form-control" require>
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -81,7 +87,7 @@
                         <div class="row mt-3">
                             <div class="col-lg-12 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary btn-sm me-2"><i class="bi bi-save"></i> สมัครสมาชิก</button>
-                                <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x-square"></i> ยกเลิก</button>
+                                <button type="reset" class="btn btn-danger btn-sm" ><i class="bi bi-x-square"></i> ยกเลิก</button>
                             </div>
                         </div>
                     </form>
@@ -91,5 +97,16 @@
            <div class="col-lg-3 col-md-3 col-sm-1"></div>
     </div>
 
+    <script>
+        function OnBlurPwd(){
+            let pwd1 = document.getElementById("pwd");
+            let pwd2 = document.getElementById("pwd2");
+
+            if(pwd1.value!==pwd2.value){
+                alert("รหัสผ่านทั้งสองไม่ตรงกัน");
+                pwd2.value="";
+            }
+        }
+    </script>
 </body>
 </html>

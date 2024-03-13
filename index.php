@@ -60,14 +60,26 @@
                 INNER JOIN category as t3 ON (t1.cat_id=t3.id) ORDER BY t1.post_date DESC";
         $result= $conn->query($sql);
         while($row = $result->fetch()){
-            echo "<tr><td>[ $row[0] ] <a href=post.php?id=$row[2]
-            style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td></tr>";
+            echo "<tr><td class='d-flex justify-content-between'> <div>[ $row[0] ] <a href=post.php?id=$row[2]
+            style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</div>";
+            if(isset($_SESSION['id']) && $_SESSION['role']=='a'){
+                echo "<div class='me-2 align-self-center'><a href=delete.php?id=$row[2]
+                class='btn btn-danger btn-sm' onclick='return DELETE()'><i class='bi bi-trash' id='delete'></i></a></div>";
+            }
+            echo "</td></tr>";
         }
         $conn = null;
     ?>
     </table>
-
-        </div>
     
+    </div>
+    <script>
+
+        function DELETE(){
+            let a =confirm("ต้องการจะจริงหรือไม่")
+            return a;
+        }
+    
+</script>
 </body>
 </html>

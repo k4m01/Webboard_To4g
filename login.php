@@ -47,7 +47,14 @@
                         </div>
                         <div class="form-group  mt-2">
                             <label for="password" class="form-label">Password:</label> 
-                            <input type="password" name="password" id="password" class="form-control">
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control" >
+                                <span class="input-group-text" onclick="password_Show_Hide()">
+                                    <i class="bi bi-eye-fill" id="show-pwd"></i>
+                                    <i class="bi bi-eye-slash-fill d-none " id="clos_pwd"></i>
+                                </span>
+                            </div>
+                           
                         </div>
                         <div class=" mt-3" align="center">
                             
@@ -63,5 +70,25 @@
         <div class="mt-4"><p style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a></p></div>
     </div>
 </div>
+
+<script>
+    function password_Show_Hide(){
+        let x = document.getElementById("password");
+        let show = document.getElementById("show-pwd");
+        let close = document.getElementById("clos_pwd");
+        close.classList.remove("d-none");
+
+        if(x.type === "password"){
+            x.type="text";
+            show.style.display="none";
+            close.style.display="block";
+        }else{
+            x.type="password";
+            show.style.display="block";
+            close.style.display="none";
+        }
+        
+    }
+</script>
 </body>
 </html>
